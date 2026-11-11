@@ -1,0 +1,3665 @@
+/*
+ * Author       : vinesh.d.2024.cse_rajalak89
+ * Generated on : 10-Nov-2026 20:28:07
+ * Version      : 1.0
+ */
+ application "SiteSafe Construction Safety System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form ai_insights_log
+		{
+			displayname = "AI Insights Log"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			ai_generated_summary
+			(
+    			type = textarea
+				displayname = "AI Generated Summary"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			identified_risk_factors
+			(
+    			type = textarea
+				displayname = "Identified Risk Factors"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recommended_actions
+			(
+    			type = textarea
+				displayname = "Recommended Actions"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			generated_date
+			(
+    			type = date
+				displayname = "Generated Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reviewed_by
+			(
+    			type = name
+				displayname = "Reviewed By"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			review_status
+			(
+				type = picklist
+				displayname = "Review Status"
+				values = {"Approved","Rejected","Pending","Reviewed"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			related_site
+			(
+				type = list	
+				displayname = "Related Site"
+				values  = site_registry.ID
+    			displayformat = [site_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			related_hazard
+			(
+				type = list	
+				displayname = "Related Hazard"
+				values  = hazard_register.ID
+    			displayformat = [hazard_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			insight_id
+			(
+    			type = text
+				displayname = "Insight ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form corrective_action_tracker
+		{
+			displayname = "Corrective Action Tracker"
+			success message = "Corrective Action Tracker Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			action_description
+			(
+    			type = textarea
+				displayname = "Action Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			assigned_person
+			(
+    			type = name
+				displayname = "Assigned Person"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			priority
+			(
+				type = picklist
+				displayname = "Priority"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_raised
+			(
+    			type = date
+				displayname = "Date Raised"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			due_date
+			(
+    			type = date
+				displayname = "Due Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			completion_evidence
+			(
+    			type = url
+				displayname = "Completion Evidence"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Verified","Closed","In Progress","Open"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			verified_by
+			(
+    			type = name
+				displayname = "Verified By"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			closure_date
+			(
+    			type = date
+				displayname = "Closure Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			site_reference
+			(
+				type = list	
+				displayname = "Site Reference"
+				values  = site_registry.ID
+    			displayformat = [site_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			hazard_reference
+			(
+				type = list	
+				displayname = "Hazard Reference"
+				values  = hazard_register.ID
+    			displayformat = [hazard_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			action_id
+			(
+    			type = text
+				displayname = "Action ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form hazard_register
+		{
+			displayname = "Hazard Register"
+			success message = "Hazard Register Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			hazard_description
+			(
+    			type = textarea
+				displayname = "Hazard Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			hazard_category
+			(
+				type = picklist
+				displayname = "Hazard Category"
+				values = {"Physical","Psychosocial","Chemical","Ergonomic","Biological"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			potential_consequence
+			(
+    			type = textarea
+				displayname = "Potential Consequence"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			ai_risk_level
+			(
+				type = picklist
+				displayname = "AI Risk Level"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			ai_risk_explanation
+			(
+    			type = textarea
+				displayname = "AI Risk Explanation"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recommended_preventive_action
+			(
+    			type = textarea
+				displayname = "Recommended Preventive Action"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			assigned_person
+			(
+    			type = name
+				displayname = "Assigned Person"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			priority
+			(
+				type = picklist
+				displayname = "Priority"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_reported
+			(
+    			type = date
+				displayname = "Date Reported"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			due_date
+			(
+    			type = date
+				displayname = "Due Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Verified","Closed","In Progress","Resolved","Open"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			resolution_evidence
+			(
+    			type = url
+				displayname = "Resolution Evidence"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			verified_by
+			(
+    			type = name
+				displayname = "Verified By"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			closure_date
+			(
+    			type = date
+				displayname = "Closure Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			site_reference
+			(
+				type = list	
+				displayname = "Site Reference"
+				values  = site_registry.ID
+    			displayformat = [site_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			inspection_reference
+			(
+				type = list	
+				displayname = "Inspection Reference"
+				values  = safety_inspections.ID
+    			displayformat = [inspection_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			hazard_id
+			(
+    			type = text
+				displayname = "Hazard ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Hazard Reported","Hazard Assigned","Hazard Rejected","Hazard Under Review","Hazard Mitigation Plan Approved","Hazard Escalated","Hazard Being Resolved","Hazard Pending Verification","Hazard Verified","Hazard Closed"}
+			}
+		}
+		form safety_inspections
+		{
+			displayname = "Safety Inspections"
+			success message = "Safety Inspections Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			inspection_date
+			(
+    			type = date
+				displayname = "Inspection Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			inspector_name
+			(
+    			type = name
+				displayname = "Inspector Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			inspection_category
+			(
+				type = picklist
+				displayname = "Inspection Category"
+				values = {"Housekeeping","PPE","Fire Safety","Scaffolding","Working at Heights","Machinery","Excavation Safety","Electrical Safety"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			checklist_result
+			(
+				type = picklist
+				displayname = "Checklist Result"
+				values = {"Pass","Partial","Fail"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			hazard_description
+			(
+    			type = textarea
+				displayname = "Hazard Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			photo_evidence
+			(
+    			type = url
+				displayname = "Photo Evidence"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			ai_risk_assessment
+			(
+    			type = text
+				displayname = "AI Risk Assessment"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			risk_level
+			(
+				type = picklist
+				displayname = "Risk Level"
+				values = {"High","Low","Medium","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recommended_corrective_action
+			(
+    			type = textarea
+				displayname = "Recommended Corrective Action"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			assigned_person
+			(
+    			type = name
+				displayname = "Assigned Person"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			due_date
+			(
+    			type = date
+				displayname = "Due Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			resolution_status
+			(
+				type = picklist
+				displayname = "Resolution Status"
+				values = {"Verified","In Progress","Resolved","Open"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			site_reference
+			(
+				type = list	
+				displayname = "Site Reference"
+				values  = site_registry.ID
+    			displayformat = [site_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			inspection_id
+			(
+    			type = text
+				displayname = "Inspection ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form site_registry
+		{
+			displayname = "Site Registry"
+			success message = "Site Registry Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			site_name
+			(
+    			type = text
+				displayname = "Site Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			site_location
+			(
+    			type = address
+				displayname = "Site Location"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+	     			 visibility = false
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+	     			 visibility = false
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "Latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "Longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_manager
+			(
+    			type = name
+				displayname = "Project Manager"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			safety_officer
+			(
+    			type = name
+				displayname = "Safety Officer"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			project_start_date
+			(
+    			type = date
+				displayname = "Project Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			expected_completion_date
+			(
+    			type = date
+				displayname = "Expected Completion Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			site_status
+			(
+				type = picklist
+				displayname = "Site Status"
+				values = {"Active","On Hold","Closed","Completed"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			overall_safety_status
+			(
+				type = picklist
+				displayname = "Overall Safety Status"
+				values = {"Warning","Safe","Critical"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			open_hazard_count
+			(
+				type = number
+				displayname = "Open Hazard Count"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			site_code
+			(
+    			type = text
+				displayname = "Site Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form work_permit_management
+		{
+			displayname = "Work Permit Management"
+			success message = "Work Permit Management Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			work_type
+			(
+				type = picklist
+				displayname = "Work Type"
+				values = {"Hot Work","Confined Space Entry","Electrical Isolation","Working at Heights","Excavation","Lifting Operations"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			work_location
+			(
+    			type = text
+				displayname = "Work Location"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			requested_by
+			(
+    			type = name
+				displayname = "Requested By"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			work_start_datetime
+			(
+    			type = datetime
+				displayname = "Work Start Date and Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			work_end_datetime
+			(
+    			type = datetime
+				displayname = "Work End Date and Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			hazard_assessment_completed
+			(
+    			type = checkbox
+				displayname = "Hazard Assessment Completed"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			required_precautions_verified
+			(
+    			type = checkbox
+				displayname = "Required Precautions Verified"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			required_documents_verified
+			(
+    			type = checkbox
+				displayname = "Required Documents Verified"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			permit_status
+			(
+				type = picklist
+				displayname = "Permit Status"
+				values = {"Submitted","Draft","Active","Closed","Approved","Expired","Rejected"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			approved_by
+			(
+    			type = name
+				displayname = "Approved By"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			approval_date
+			(
+    			type = date
+				displayname = "Approval Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			expiry_status
+			(
+				type = picklist
+				displayname = "Expiry Status"
+				values = {"Valid","Expired","Not Applicable"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			closure_notes
+			(
+    			type = textarea
+				displayname = "Closure Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			site_reference
+			(
+				type = list	
+				displayname = "Site Reference"
+				values  = site_registry.ID
+    			displayformat = [site_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			permit_id
+			(
+    			type = text
+				displayname = "Permit ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Permit Requested","Pending Document Verification","Permit Cancelled","Pending Safety Assessment","Pending Approval","Permit Active","Work In Progress","Permit Suspended","Work Completed","Pending Closure","Permit Closed"}
+			}
+		}
+	}
+	reports
+	{
+		list hazard_register_Report
+		{
+			displayName = "All Hazard Registers"
+			show all rows from hazard_register    
+			(
+				hazard_description as "Hazard Description"
+				hazard_category as "Hazard Category"
+				potential_consequence as "Potential Consequence"
+				ai_risk_level as "AI Risk Level"
+				ai_risk_explanation as "AI Risk Explanation"
+				recommended_preventive_action as "Recommended Preventive Action"
+				assigned_person  as "Assigned Person"
+				priority as "Priority"
+				date_reported as "Date Reported"
+				due_date as "Due Date"
+				status as "Status"
+				resolution_evidence as "Resolution Evidence"
+				verified_by  as "Verified By"
+				closure_date as "Closure Date"
+				site_reference as "Site Reference"
+				inspection_reference as "Inspection Reference"
+				hazard_id as "Hazard ID"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (hazard_category == "Biological")
+				fields = [hazard_category]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (hazard_category == "Chemical")
+				fields = [hazard_category]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (hazard_category == "Physical")
+				fields = [hazard_category]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+				"New Formatting4"
+				{
+				condition = (hazard_category == "Psychosocial")
+				fields = [hazard_category]
+				format = "color:#ffffff;background-color:#3598db;"
+				}
+			)
+		}
+		kanban hazard_register_by_hazard_category
+		{
+			displayName = "Hazard Categories"
+			show all rows from hazard_register    
+			(
+				hazard_description as "Hazard Description"
+				hazard_category as "Hazard Category"
+				potential_consequence as "Potential Consequence"
+				ai_risk_level as "AI Risk Level"
+				ai_risk_explanation as "AI Risk Explanation"
+				recommended_preventive_action as "Recommended Preventive Action"
+				assigned_person  as "Assigned Person"
+				priority as "Priority"
+				date_reported as "Date Reported"
+				due_date as "Due Date"
+				status as "Status"
+				resolution_evidence as "Resolution Evidence"
+				verified_by  as "Verified By"
+				closure_date as "Closure Date"
+				site_reference as "Site Reference"
+				inspection_reference as "Inspection Reference"
+				hazard_id as "Hazard ID"
+			)
+			options
+			(
+	 			display field = hazard_category
+	 		)
+		}
+		list corrective_action_tracker_Report
+		{
+			displayName = "All Corrective Action Trackers"
+			show all rows from corrective_action_tracker    
+			(
+				action_description as "Action Description"
+				assigned_person  as "Assigned Person"
+				priority as "Priority"
+				date_raised as "Date Raised"
+				due_date as "Due Date"
+				completion_evidence as "Completion Evidence"
+				status as "Status"
+				verified_by  as "Verified By"
+				closure_date as "Closure Date"
+				site_reference as "Site Reference"
+				hazard_reference as "Hazard Reference"
+				action_id as "Action ID"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (priority == "Critical")
+				fields = [priority]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (priority == "High")
+				fields = [priority]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban corrective_action_tracker_by_priority
+		{
+			displayName = "Priorities"
+			show all rows from corrective_action_tracker    
+			(
+				action_description as "Action Description"
+				assigned_person  as "Assigned Person"
+				priority as "Priority"
+				date_raised as "Date Raised"
+				due_date as "Due Date"
+				completion_evidence as "Completion Evidence"
+				status as "Status"
+				verified_by  as "Verified By"
+				closure_date as "Closure Date"
+				site_reference as "Site Reference"
+				hazard_reference as "Hazard Reference"
+				action_id as "Action ID"
+			)
+			options
+			(
+	 			display field = priority
+	 		)
+		}
+		list ai_insights_log_Report
+		{
+			displayName = "AI Insights Log Report"
+			show all rows from ai_insights_log    
+			(
+				ai_generated_summary as "AI Generated Summary"
+				identified_risk_factors as "Identified Risk Factors"
+				recommended_actions as "Recommended Actions"
+				generated_date as "Generated Date"
+				reviewed_by  as "Reviewed By"
+				review_status as "Review Status"
+				related_site as "Related Site"
+				related_hazard as "Related Hazard"
+				insight_id as "Insight ID"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (review_status == "Approved")
+				fields = [review_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (review_status == "Pending")
+				fields = [review_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (review_status == "Rejected")
+				fields = [review_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban ai_insights_log_by_review_status
+		{
+			displayName = "Review Statuses"
+			show all rows from ai_insights_log    
+			(
+				ai_generated_summary as "AI Generated Summary"
+				identified_risk_factors as "Identified Risk Factors"
+				recommended_actions as "Recommended Actions"
+				generated_date as "Generated Date"
+				reviewed_by  as "Reviewed By"
+				review_status as "Review Status"
+				related_site as "Related Site"
+				related_hazard as "Related Hazard"
+				insight_id as "Insight ID"
+			)
+			options
+			(
+	 			display field = review_status
+	 		)
+		}
+		list site_registry_Report
+		{
+			displayName = "All Site Registries"
+			show all rows from site_registry    
+			(
+				site_name as "Site Name"
+				site_location  as "Site Location"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				project_manager  as "Project Manager"
+				safety_officer  as "Safety Officer"
+				project_start_date as "Project Start Date"
+				expected_completion_date as "Expected Completion Date"
+				site_status as "Site Status"
+				overall_safety_status as "Overall Safety Status"
+				open_hazard_count as "Open Hazard Count"
+				site_code as "Site Code"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (site_status == "Active")
+				fields = [site_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (site_status == "Closed")
+				fields = [site_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (site_status == "Completed")
+				fields = [site_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban site_registry_by_site_status
+		{
+			displayName = "Site Statuses"
+			show all rows from site_registry    
+			(
+				site_name as "Site Name"
+				site_location  as "Site Location"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				project_manager  as "Project Manager"
+				safety_officer  as "Safety Officer"
+				project_start_date as "Project Start Date"
+				expected_completion_date as "Expected Completion Date"
+				site_status as "Site Status"
+				overall_safety_status as "Overall Safety Status"
+				open_hazard_count as "Open Hazard Count"
+				site_code as "Site Code"
+			)
+			options
+			(
+	 			display field = site_status
+	 		)
+		}
+		list work_permit_management_Report
+		{
+			displayName = "All Work Permit Management"
+			show all rows from work_permit_management    
+			(
+				work_type as "Work Type"
+				work_location as "Work Location"
+				requested_by  as "Requested By"
+				work_start_datetime as "Work Start Date and Time"
+				work_end_datetime as "Work End Date and Time"
+				hazard_assessment_completed as "Hazard Assessment Completed"
+				required_precautions_verified as "Required Precautions Verified"
+				required_documents_verified as "Required Documents Verified"
+				permit_status as "Permit Status"
+				approved_by  as "Approved By"
+				approval_date as "Approval Date"
+				expiry_status as "Expiry Status"
+				closure_notes as "Closure Notes"
+				site_reference as "Site Reference"
+				permit_id as "Permit ID"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (expiry_status == "Expired")
+				fields = [expiry_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (expiry_status == "Valid")
+				fields = [expiry_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban work_permit_management_by_permit_status
+		{
+			displayName = "Permit Statuses"
+			show all rows from work_permit_management    
+			(
+				work_type as "Work Type"
+				work_location as "Work Location"
+				requested_by  as "Requested By"
+				work_start_datetime as "Work Start Date and Time"
+				work_end_datetime as "Work End Date and Time"
+				hazard_assessment_completed as "Hazard Assessment Completed"
+				required_precautions_verified as "Required Precautions Verified"
+				required_documents_verified as "Required Documents Verified"
+				permit_status as "Permit Status"
+				approved_by  as "Approved By"
+				approval_date as "Approval Date"
+				expiry_status as "Expiry Status"
+				closure_notes as "Closure Notes"
+				site_reference as "Site Reference"
+				permit_id as "Permit ID"
+			)
+			options
+			(
+	 			display field = permit_status
+	 		)
+		}
+		list safety_inspections_Report
+		{
+			displayName = "All Safety Inspections"
+			show all rows from safety_inspections    
+			(
+				inspection_date as "Inspection Date"
+				inspector_name  as "Inspector Name"
+				inspection_category as "Inspection Category"
+				checklist_result as "Checklist Result"
+				hazard_description as "Hazard Description"
+				photo_evidence as "Photo Evidence"
+				ai_risk_assessment as "AI Risk Assessment"
+				risk_level as "Risk Level"
+				recommended_corrective_action as "Recommended Corrective Action"
+				assigned_person  as "Assigned Person"
+				due_date as "Due Date"
+				resolution_status as "Resolution Status"
+				site_reference as "Site Reference"
+				inspection_id as "Inspection ID"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (resolution_status == "Resolved")
+				fields = [resolution_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (resolution_status == "Verified")
+				fields = [resolution_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban safety_inspections_by_inspection_category
+		{
+			displayName = "Inspection Categories"
+			show all rows from safety_inspections    
+			(
+				inspection_date as "Inspection Date"
+				inspector_name  as "Inspector Name"
+				inspection_category as "Inspection Category"
+				checklist_result as "Checklist Result"
+				hazard_description as "Hazard Description"
+				photo_evidence as "Photo Evidence"
+				ai_risk_assessment as "AI Risk Assessment"
+				risk_level as "Risk Level"
+				recommended_corrective_action as "Recommended Corrective Action"
+				assigned_person  as "Assigned Person"
+				due_date as "Due Date"
+				resolution_status as "Resolution Status"
+				site_reference as "Site Reference"
+				inspection_id as "Inspection ID"
+			)
+			options
+			(
+	 			display field = inspection_category
+	 		)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F97164'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '64%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '8px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.hazard_register.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '8px' \n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Hazard Registers'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '36%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#C75A50'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EEA131'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.corrective_action_tracker.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Corrective Action Trackers'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#BE8127'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'media-1-action-74'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#00CFA9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.ai_insights_log.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Count of AI Insights Log'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0BA385'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-info'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3E99DE'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.site_registry.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Site Registries'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0E78C9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Priority'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F97164'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'clothes-shoe-woman'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tcolor = '#C75A50'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;High&quot;'\n\t  value = 'thisapp.hazard_register.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'High'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#EEA131'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'envir-level'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#BE8127'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Low&quot;'\n\t  value = 'thisapp.hazard_register.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Low'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00CFA9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-shapes'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0BA385'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Medium&quot;'\n\t  value = 'thisapp.hazard_register.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Medium'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#3E99DE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'tech-watch-time'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0E78C9'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'priority == &quot;Critical&quot;'\n\t  value = 'thisapp.hazard_register.priority.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Critical'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 1'\n \n\t\n\ttitle = 'Quick Links'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'hazard_register'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Hazard Register'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel_Button 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'corrective_action_tracker'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Corrective Action Tracker'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel_Button 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'ai_insights_log'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New AI Insights Log'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'site_registry'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Site Registry'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Overall Safety Status by Open Hazard Count'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Overall Safety Status'\n\tytitle = 'Open Hazard Count'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = '#f37d16'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'site_registry'\n\txfield = 'overall_safety_status'\n\tyfields = 'sum:open_hazard_count'\n\tgroupBy = 'site_name'\n\t\tDelugeCriteria = 'overall_safety_status is not null &amp;&amp; overall_safety_status != &quot;&quot;'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Site Status by Open Hazard Count'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Site Status'\n\tytitle = 'Open Hazard Count'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = 'theme1'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'site_registry'\n\txfield = 'site_status'\n\tyfields = 'sum:open_hazard_count'\n\tgroupBy = 'site_name'\n\t\tDelugeCriteria = 'site_status is not null &amp;&amp; site_status != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'hazard_register_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+	chats
+	{
+		chat Site_Safety_Assistant
+		{
+			display name = "Site Safety Assistant"
+			access level = read_write
+			instructions
+			(
+				value = "You are a Site Safety Assistant designed to help administrators and users manage safety operations within the application. Your primary role is to assist with data operations across the hazard register, safety inspections, corrective action tracker, and site registry modules.\nRetrieve, analyze, and summarize data from the selected modules to provide insights on site safety status.\nAssist users in creating, updating, or closing records related to hazards, inspections, and corrective actions when requested.\nProvide clear, concise summaries of safety trends, pending tasks, and compliance status.\nDo not attempt to configure the application, modify forms, workflows, or system settings. Focus strictly on data interaction.\nIf a user asks for administrative setup tasks, politely decline and redirect them to data-related assistance.\nEnsure all data interactions respect the context of the current user's session and available modules."
+			)
+			personalization
+			(
+				welcome message = "Hello! I am your Site Safety Assistant. I can help you track hazards, manage inspections, monitor corrective actions, and review site registry data to ensure overall site safety."
+			)
+			forms
+			(
+				safety_inspections
+				corrective_action_tracker
+				hazard_register
+				site_registry
+			)
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			auto_set_site_safety_status as "Auto-Set Site Safety Status"
+			{
+				type =  form
+				form = site_registry
+
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// Fetch the current site record from site_registry form
+										siteRecord = site_registry[ID == input.ID];
+										// Get the open hazard count from the input
+										openHazardCount = input.open_hazard_count;
+										// Determine the overall safety status based on open hazard count
+										if(openHazardCount == 0)
+										{
+											// No open hazards - site is safe
+											siteRecord.overall_safety_status="Safe";
+										}
+										else if(openHazardCount > 0 && openHazardCount <= 3)
+										{
+											// Few open hazards - site has warning status
+											siteRecord.overall_safety_status="Warning";
+										}
+										else if(openHazardCount > 3)
+										{
+											// Many open hazards - site is critical
+											siteRecord.overall_safety_status="Critical";
+										}
+										// Update the site record with the new safety status
+										update siteRecord
+										[
+											overall_safety_status=siteRecord.overall_safety_status
+										];
+										// Log the update action
+										info "Updated overall safety status for site: " + siteRecord.site_name + " to " + siteRecord.overall_safety_status;
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Compliance Auditor"
+			{
+				name = "Compliance Auditor"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review historical inspection data and hazard registers for regulatory compliance \n"
+				ModulePermissions
+				{
+					corrective_action_tracker
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							corrective_action_tracker_by_priority={"View"}
+							corrective_action_tracker_Report={"View"}
+						}
+					}
+					hazard_register
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							hazard_register_Report={"View"}
+							hazard_register_by_hazard_category={"View"}
+						}
+					}
+					ai_insights_log
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							ai_insights_log_by_review_status={"View"}
+							ai_insights_log_Report={"View"}
+						}
+					}
+					safety_inspections
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							safety_inspections_Report={"View"}
+							safety_inspections_by_inspection_category={"View"}
+						}
+					}
+				}
+			}
+			"Site Safety Manager"
+			{
+				name = "Site Safety Manager"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Oversee overall safety status and site registry details across all active projects \n"
+				ModulePermissions
+				{
+					site_registry
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							site_registry_Report={"View","Edit"}
+							site_registry_by_site_status={"View","Edit"}
+						}
+					}
+					work_permit_management
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							work_permit_management_by_permit_status={"View","Edit"}
+							work_permit_management_Report={"View","Edit"}
+						}
+					}
+					corrective_action_tracker
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							corrective_action_tracker_by_priority={"View","Edit"}
+							corrective_action_tracker_Report={"View","Edit"}
+						}
+					}
+					hazard_register
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							hazard_register_Report={"View","Edit"}
+							hazard_register_by_hazard_category={"View","Edit"}
+						}
+					}
+					ai_insights_log
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							ai_insights_log_by_review_status={"View","Edit"}
+							ai_insights_log_Report={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Safety Officer"
+			{
+				name = "Safety Officer"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Conduct regular safety inspections and document findings with photo evidence \n"
+				ModulePermissions
+				{
+					work_permit_management
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							work_permit_management_by_permit_status={"View","Edit"}
+							work_permit_management_Report={"View","Edit"}
+						}
+					}
+					hazard_register
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							hazard_register_Report={"View","Edit"}
+							hazard_register_by_hazard_category={"View","Edit"}
+						}
+					}
+					safety_inspections
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							safety_inspections_Report={"View","Edit"}
+							safety_inspections_by_inspection_category={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Permit Coordinator"
+			{
+				name = "Permit Coordinator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Manage the lifecycle of work permits from draft submission to final closure \n"
+				ModulePermissions
+				{
+					work_permit_management
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							work_permit_management_by_permit_status={"View","Edit","Delete"}
+							work_permit_management_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Project Manager"
+			{
+				name = "Project Manager"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Monitor site status and overall safety ratings for their specific project \n"
+				ModulePermissions
+				{
+					site_registry
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							site_registry_Report={"View"}
+							site_registry_by_site_status={"View"}
+						}
+					}
+					corrective_action_tracker
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							corrective_action_tracker_by_priority={"View","Edit"}
+							corrective_action_tracker_Report={"View","Edit"}
+						}
+					}
+					safety_inspections
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							safety_inspections_Report={"View"}
+							safety_inspections_by_inspection_category={"View"}
+						}
+					}
+				}
+			}
+			"Contractor"
+			{
+				name = "Contractor"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Request work permits for specific tasks like hot work or excavation \n"
+				ModulePermissions
+				{
+					work_permit_management
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							work_permit_management_by_permit_status={"View","Edit"}
+							work_permit_management_Report={"View","Edit"}
+						}
+					}
+					corrective_action_tracker
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							corrective_action_tracker_by_priority={"View","Edit"}
+							corrective_action_tracker_Report={"View","Edit"}
+						}
+					}
+					hazard_register
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							hazard_register_Report={"View","Edit"}
+							hazard_register_by_hazard_category={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form ai_insights_log
+			{
+				label placement = left
+			}
+			form corrective_action_tracker
+			{
+				label placement = left
+			}
+			form hazard_register
+			{
+				label placement = left
+			}
+			form safety_inspections
+			{
+				label placement = left
+			}
+			form site_registry
+			{
+				label placement = left
+			}
+			form work_permit_management
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report hazard_register_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								hazard_description as "Hazard Description"
+								hazard_category as "Hazard Category"
+								potential_consequence as "Potential Consequence"
+								ai_risk_level as "AI Risk Level"
+								ai_risk_explanation as "AI Risk Explanation"
+								recommended_preventive_action as "Recommended Preventive Action"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_reported as "Date Reported"
+								due_date as "Due Date"
+								status as "Status"
+								resolution_evidence as "Resolution Evidence"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								inspection_reference as "Inspection Reference"
+								hazard_id as "Hazard ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								hazard_description as "Hazard Description"
+								hazard_category as "Hazard Category"
+								potential_consequence as "Potential Consequence"
+								ai_risk_level as "AI Risk Level"
+								ai_risk_explanation as "AI Risk Explanation"
+								recommended_preventive_action as "Recommended Preventive Action"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_reported as "Date Reported"
+								due_date as "Due Date"
+								status as "Status"
+								resolution_evidence as "Resolution Evidence"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								inspection_reference as "Inspection Reference"
+								hazard_id as "Hazard ID"
+							)
+						)
+						datablock2
+						(
+		     				title = "Site Reference"
+		     				related field = site_reference
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+						datablock3
+						(
+		     				title = "Inspection Reference"
+		     				related field = inspection_reference
+							fields
+							(
+								inspection_date as "Inspection Date"
+								inspector_name as "Inspector Name"
+								inspection_category as "Inspection Category"
+								checklist_result as "Checklist Result"
+								hazard_description as "Hazard Description"
+								photo_evidence as "Photo Evidence"
+								ai_risk_assessment as "AI Risk Assessment"
+								risk_level as "Risk Level"
+								recommended_corrective_action as "Recommended Corrective Action"
+								assigned_person as "Assigned Person"
+								due_date as "Due Date"
+								resolution_status as "Resolution Status"
+								site_reference as "Site Reference"
+								inspection_id as "Inspection ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report hazard_register_by_hazard_category
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								assigned_person as "Assigned Person"
+								verified_by as "Verified By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								hazard_description as "Hazard Description"
+								hazard_category as "Hazard Category"
+								potential_consequence as "Potential Consequence"
+								ai_risk_level as "AI Risk Level"
+								ai_risk_explanation as "AI Risk Explanation"
+								recommended_preventive_action as "Recommended Preventive Action"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_reported as "Date Reported"
+								due_date as "Due Date"
+								status as "Status"
+								resolution_evidence as "Resolution Evidence"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								inspection_reference as "Inspection Reference"
+								hazard_id as "Hazard ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report corrective_action_tracker_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								action_description as "Action Description"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_raised as "Date Raised"
+								due_date as "Due Date"
+								completion_evidence as "Completion Evidence"
+								status as "Status"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								hazard_reference as "Hazard Reference"
+								action_id as "Action ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								action_description as "Action Description"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_raised as "Date Raised"
+								due_date as "Due Date"
+								completion_evidence as "Completion Evidence"
+								status as "Status"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								hazard_reference as "Hazard Reference"
+								action_id as "Action ID"
+							)
+						)
+						datablock2
+						(
+		     				title = "Site Reference"
+		     				related field = site_reference
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+						datablock3
+						(
+		     				title = "Hazard Reference"
+		     				related field = hazard_reference
+							fields
+							(
+								hazard_description as "Hazard Description"
+								hazard_category as "Hazard Category"
+								potential_consequence as "Potential Consequence"
+								ai_risk_level as "AI Risk Level"
+								ai_risk_explanation as "AI Risk Explanation"
+								recommended_preventive_action as "Recommended Preventive Action"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_reported as "Date Reported"
+								due_date as "Due Date"
+								status as "Status"
+								resolution_evidence as "Resolution Evidence"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								inspection_reference as "Inspection Reference"
+								hazard_id as "Hazard ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report corrective_action_tracker_by_priority
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								assigned_person as "Assigned Person"
+								verified_by as "Verified By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								action_description as "Action Description"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_raised as "Date Raised"
+								due_date as "Due Date"
+								completion_evidence as "Completion Evidence"
+								status as "Status"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								hazard_reference as "Hazard Reference"
+								action_id as "Action ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report ai_insights_log_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								ai_generated_summary as "AI Generated Summary"
+								identified_risk_factors as "Identified Risk Factors"
+								recommended_actions as "Recommended Actions"
+								generated_date as "Generated Date"
+								reviewed_by as "Reviewed By"
+								review_status as "Review Status"
+								related_site as "Related Site"
+								related_hazard as "Related Hazard"
+								insight_id as "Insight ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								ai_generated_summary as "AI Generated Summary"
+								identified_risk_factors as "Identified Risk Factors"
+								recommended_actions as "Recommended Actions"
+								generated_date as "Generated Date"
+								reviewed_by as "Reviewed By"
+								review_status as "Review Status"
+								related_site as "Related Site"
+								related_hazard as "Related Hazard"
+								insight_id as "Insight ID"
+							)
+						)
+						datablock2
+						(
+		     				title = "Related Site"
+		     				related field = related_site
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+						datablock3
+						(
+		     				title = "Related Hazard"
+		     				related field = related_hazard
+							fields
+							(
+								hazard_description as "Hazard Description"
+								hazard_category as "Hazard Category"
+								potential_consequence as "Potential Consequence"
+								ai_risk_level as "AI Risk Level"
+								ai_risk_explanation as "AI Risk Explanation"
+								recommended_preventive_action as "Recommended Preventive Action"
+								assigned_person as "Assigned Person"
+								priority as "Priority"
+								date_reported as "Date Reported"
+								due_date as "Due Date"
+								status as "Status"
+								resolution_evidence as "Resolution Evidence"
+								verified_by as "Verified By"
+								closure_date as "Closure Date"
+								site_reference as "Site Reference"
+								inspection_reference as "Inspection Reference"
+								hazard_id as "Hazard ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report ai_insights_log_by_review_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								reviewed_by as "Reviewed By"
+								insight_id as "Insight ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								ai_generated_summary as "AI Generated Summary"
+								identified_risk_factors as "Identified Risk Factors"
+								recommended_actions as "Recommended Actions"
+								generated_date as "Generated Date"
+								reviewed_by as "Reviewed By"
+								review_status as "Review Status"
+								related_site as "Related Site"
+								related_hazard as "Related Hazard"
+								insight_id as "Insight ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report site_registry_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report site_registry_by_site_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report work_permit_management_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								work_type as "Work Type"
+								work_location as "Work Location"
+								requested_by as "Requested By"
+								work_start_datetime as "Work Start Date and Time"
+								work_end_datetime as "Work End Date and Time"
+								hazard_assessment_completed as "Hazard Assessment Completed"
+								required_precautions_verified as "Required Precautions Verified"
+								required_documents_verified as "Required Documents Verified"
+								permit_status as "Permit Status"
+								approved_by as "Approved By"
+								approval_date as "Approval Date"
+								expiry_status as "Expiry Status"
+								closure_notes as "Closure Notes"
+								site_reference as "Site Reference"
+								permit_id as "Permit ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								work_type as "Work Type"
+								work_location as "Work Location"
+								requested_by as "Requested By"
+								work_start_datetime as "Work Start Date and Time"
+								work_end_datetime as "Work End Date and Time"
+								hazard_assessment_completed as "Hazard Assessment Completed"
+								required_precautions_verified as "Required Precautions Verified"
+								required_documents_verified as "Required Documents Verified"
+								permit_status as "Permit Status"
+								approved_by as "Approved By"
+								approval_date as "Approval Date"
+								expiry_status as "Expiry Status"
+								closure_notes as "Closure Notes"
+								site_reference as "Site Reference"
+								permit_id as "Permit ID"
+							)
+						)
+						datablock2
+						(
+		     				title = "Site Reference"
+		     				related field = site_reference
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report work_permit_management_by_permit_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								requested_by as "Requested By"
+								approved_by as "Approved By"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								work_type as "Work Type"
+								work_location as "Work Location"
+								requested_by as "Requested By"
+								work_start_datetime as "Work Start Date and Time"
+								work_end_datetime as "Work End Date and Time"
+								hazard_assessment_completed as "Hazard Assessment Completed"
+								required_precautions_verified as "Required Precautions Verified"
+								required_documents_verified as "Required Documents Verified"
+								permit_status as "Permit Status"
+								approved_by as "Approved By"
+								approval_date as "Approval Date"
+								expiry_status as "Expiry Status"
+								closure_notes as "Closure Notes"
+								site_reference as "Site Reference"
+								permit_id as "Permit ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report safety_inspections_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								inspection_date as "Inspection Date"
+								inspector_name as "Inspector Name"
+								inspection_category as "Inspection Category"
+								checklist_result as "Checklist Result"
+								hazard_description as "Hazard Description"
+								photo_evidence as "Photo Evidence"
+								ai_risk_assessment as "AI Risk Assessment"
+								risk_level as "Risk Level"
+								recommended_corrective_action as "Recommended Corrective Action"
+								assigned_person as "Assigned Person"
+								due_date as "Due Date"
+								resolution_status as "Resolution Status"
+								site_reference as "Site Reference"
+								inspection_id as "Inspection ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								inspection_date as "Inspection Date"
+								inspector_name as "Inspector Name"
+								inspection_category as "Inspection Category"
+								checklist_result as "Checklist Result"
+								hazard_description as "Hazard Description"
+								photo_evidence as "Photo Evidence"
+								ai_risk_assessment as "AI Risk Assessment"
+								risk_level as "Risk Level"
+								recommended_corrective_action as "Recommended Corrective Action"
+								assigned_person as "Assigned Person"
+								due_date as "Due Date"
+								resolution_status as "Resolution Status"
+								site_reference as "Site Reference"
+								inspection_id as "Inspection ID"
+							)
+						)
+						datablock2
+						(
+		     				title = "Site Reference"
+		     				related field = site_reference
+							fields
+							(
+								site_name as "Site Name"
+								site_location as "Site Location"
+								project_manager as "Project Manager"
+								safety_officer as "Safety Officer"
+								project_start_date as "Project Start Date"
+								expected_completion_date as "Expected Completion Date"
+								site_status as "Site Status"
+								overall_safety_status as "Overall Safety Status"
+								open_hazard_count as "Open Hazard Count"
+								site_code as "Site Code"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report safety_inspections_by_inspection_category
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								inspector_name as "Inspector Name"
+								assigned_person as "Assigned Person"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								inspection_date as "Inspection Date"
+								inspector_name as "Inspector Name"
+								inspection_category as "Inspection Category"
+								checklist_result as "Checklist Result"
+								hazard_description as "Hazard Description"
+								photo_evidence as "Photo Evidence"
+								ai_risk_assessment as "AI Risk Assessment"
+								risk_level as "Risk Level"
+								recommended_corrective_action as "Recommended Corrective Action"
+								assigned_person as "Assigned Person"
+								due_date as "Due Date"
+								resolution_status as "Resolution Status"
+								site_reference as "Site Reference"
+								inspection_id as "Inspection ID"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Hazard Registers"
+					icon = "food-temperature"
+					form  hazard_register
+					{
+						icon = "ui-1-bold-add"
+					}
+					report hazard_register_Report
+					{
+						icon = "travel-world"
+					}
+					report hazard_register_by_hazard_category
+					{
+						icon = "sport-user-balance"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Corrective Action Trackers"
+					icon = "media-1-action-74"
+					form  corrective_action_tracker
+					{
+						icon = "ui-1-bold-add"
+					}
+					report corrective_action_tracker_Report
+					{
+						icon = "media-1-action-74"
+					}
+					report corrective_action_tracker_by_priority
+					{
+						icon = "business-agenda"
+					}
+				}
+				section Section_4
+				{
+					displayname = "AI Insights Log"
+					icon = "tech-print-round"
+					form  ai_insights_log
+					{
+						icon = "ui-1-bold-add"
+					}
+					report ai_insights_log_Report
+					{
+						icon = "travel-info"
+					}
+					report ai_insights_log_by_review_status
+					{
+						icon = "education-board-51"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Site Registries"
+					icon = "business-net"
+					form  site_registry
+					{
+						icon = "ui-1-bold-add"
+					}
+					report site_registry_Report
+					{
+						icon = "travel-world"
+					}
+					report site_registry_by_site_status
+					{
+						icon = "weather-compass"
+					}
+				}
+				section Section_6
+				{
+					displayname = "Work Permit Management"
+					icon = "education-books-46"
+					form  work_permit_management
+					{
+						icon = "ui-1-bold-add"
+					}
+					report work_permit_management_Report
+					{
+						icon = "sport-cardio"
+					}
+					report work_permit_management_by_permit_status
+					{
+						icon = "design-window-paragraph"
+					}
+				}
+				section Section_7
+				{
+					displayname = "Safety Inspections"
+					icon = "sport-whistle"
+					form  safety_inspections
+					{
+						icon = "ui-1-bold-add"
+					}
+					report safety_inspections_Report
+					{
+						icon = "sport-whistle"
+					}
+					report safety_inspections_by_inspection_category
+					{
+						icon = "design-2-selection"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section AI_Agents
+				{
+					displayname = "AI Agents"
+					icon = "ui-2-chat-content"
+					chat Site_Safety_Assistant
+					{
+						icon = "sport-whistle"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "3"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
